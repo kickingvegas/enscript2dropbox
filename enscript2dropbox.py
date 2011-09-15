@@ -22,11 +22,22 @@ import glob
 import shutil
 
 helpString = """
+
+DESCRIPTION
+ enscript2dropbox is a utility which generates colorized HTML or pdf output of
+ a programming source file and places it into Dropbox for viewing in lieu
+ of printing out the source file. By default, output generated will be placed
+ in the directory $HOME/Dropbox/Documents/printouts
+
   -h, --help                   print help
-  -E[lang], --highlight[=lang] use objc fancy printing
+  -E[lang], --highlight[=lang] Highlight using enscript --highlight option
+  -w[lang], --language[=lang]  Set output file format. Supported formats are html (default) and pdf.
+
+SEE ALSO
+enscript(1)
 """
 
-usageString = "enscript2dropbox [options] file"
+usageString = "enscript2dropbox [options] file1 file2 ..."
 
 class Enscript2Dropbox:
     extensionMap = { '.m' : 'objc',
@@ -101,7 +112,13 @@ class Enscript2Dropbox:
     def genPdf(self):
         print 'generating pdf'
         tempFilePath = os.path.join(self.getTempDir(), self.outfileName) 
-        pdfCmd = ['pstopdf']
+        pdfCmd = []
+
+        if sys.platform in ('darwin',):
+            pdfCmd.append('pstopdf')
+        else:
+            pdfCmd.append('ps2pdf')
+
         pdfCmd.append(tempFilePath)
         print ' '.join(pdfCmd)
         subprocess.call(pdfCmd)
@@ -124,8 +141,14 @@ class Enscript2Dropbox:
             elif o in ('-E', '--highlight'):
                 highlight = i
 
-            elif o in ('-w', '--language'):
+            elif o in ('-w', '-W', '--language'):
                 language = i
+
+
+        if len(args) == 0:
+            sys.stderr.write('ERROR: You must specify a filename.\n')
+            sys.exit(1)
+                
 
         for arg in args:
             for fileName in glob.iglob(arg):
@@ -150,7 +173,7 @@ class Enscript2Dropbox:
 if __name__ == '__main__':
     try:
         optlist, args = getopt.getopt(sys.argv[1:],
-                                      'hE:w:',
+                                      'hE:w:W:',
                                       ['help', 'highlight=', 'language='])
                                        
     except getopt.error, msg:
@@ -160,9 +183,6 @@ if __name__ == '__main__':
 
     highlight = False
 
-    if len(args) == 0:
-        sys.stderr.write('ERROR: You must specify a filename.\n')
-        sys.exit(0)
 
     app = Enscript2Dropbox()
     app.run(optlist, args)
