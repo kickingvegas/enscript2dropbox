@@ -29,12 +29,16 @@ DESCRIPTION
  of printing out the source file. By default, output generated will be placed
  in the directory $HOME/Dropbox/Documents/printouts
 
+ Implementation-wise, enscript2dropbox is a Python wrapper around the enscript
+ and pstopdf (OS X) or ps2pdf (Linux) utilities. You must also have Dropbox
+ installed and configured on your system.
+
   -h, --help                   print help
   -E[lang], --highlight[=lang] Highlight using enscript --highlight option
   -w[lang], --language[=lang]  Set output file format. Supported formats are html (default) and pdf.
 
 SEE ALSO
-enscript(1)
+enscript(1), pstopdf(1) [OS X], ps2pdf(1) [Linux]
 """
 
 usageString = "enscript2dropbox [options] file1 file2 ..."
