@@ -37,6 +37,9 @@ DESCRIPTION
   -E[lang], --highlight[=lang] Highlight using enscript --highlight option
   -w[lang], --language[=lang]  Set output file format. Supported formats are html (default) and pdf.
 
+EXAMPLE
+  $ enscript2dropbox foo.[mh]
+
 SEE ALSO
 enscript(1), pstopdf(1) [OS X], ps2pdf(1) [Linux]
 """
