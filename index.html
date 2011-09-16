@@ -46,31 +46,50 @@
       <span class="small">by <a href="http://github.com/kickingvegas">kickingvegas</a></span></h1>
 
     <div class="description">
-      Send colorized HTML or PDF output from enscript to your Dropbox folder to view on your Tablet in lieu of using a printer.
+      Send colorized HTML or PDF output from enscript to your Dropbox folder to view on your tablet in lieu of using a printer.
     </div>
 
+<h2>Oh Hai</h2>
+</p>Not so long ago, programmers would print out their source code, often times with very little formatting and consuming much paper. The benefit was to view the source code in a place other than the main screen(s) used to develop it.</p>
+<p>Tablet devices such as the iPad can emulate that "paper view" with the added benefits of richer formatting, no paper consumption and colorization.</p>
+<p><b>enscript2dropbox</b> is a command line utility that offers this capability by reading in your source code and generating either HTML or pdf output which can be viewed on your tablet using a Dropbox client app.</p>
+<p>The implementation of <b>enscript2dropbox</b> is a Python script which serves as a wrapper largely around the <code>enscript</code> utility.</p>
+
+<h2>Example Usage</h2>
+<p>Given the files <code>foo.m</code> and <code>foo.h</code>, run the following command to "print" them to Dropbox:</p>
+<pre>$ enscript2dropbox foo.m foo.h</pre>  
+</p>The files <code>foo.m.html</code> and <code>foo.h.html</code> will be placed in the directory
+<code>$HOME/Dropbox/Documents/printouts</code> where <code>$HOME</code> is your home directory.</p>
+<p>To generate pdf files instead use the <code>-w pdf</code> option:</p>
+<pre>$ enscript2dropbox -w pdf foo.m foo.h</pre>  
+
     <h2>Dependencies</h2>
-<p>Posix-based OS<br/>
-enscript(1)<br/>
-pstopdf(1) OS X<br/>
-ps2pdf(1) Linux<br/>
-Dropbox<br/>
-</p>
+<p><b>enscript2dropbox</b> supports OS X versions &ge;10.5 and most Linux systems.</p>
+<ul>
+  <li><a href="http://www.dropbox.com">Dropbox</a></li>
+  <li><code>enscript</code></li>
+  <li><code>pstopdf</code> or <code>ps2pdf</code></li>
+</ul>  
+<p><code>enscript</code> and <code>pstopdf</code> are installed by default on OS X.</p>
+
 <h2>Install</h2>
-<p>Run make to install.
-</p>
+<ol>
+  <li>Install <a href="http://www.dropbox.com">Dropbox</a>.</li>
+  <li>If you are running Linux, ensure that <code>ps2pdf</code> is installed. On OS X, <code>pstopdf</code> is already installed.</li>
+  <li>Unzip or untar project.</li>
+  <li>Change into the directory <code>enscript2dropbox</code>.</li>  
+  <li>Run the command <code>make</code> to install.</li>
+</ol>
+
 <h2>License</h2>
 <p>Apache License, Version 2.0</p>
 <h2>Authors</h2>
-<p>Charles Choi (charles.choi@yummymelon.com)
-<br/>
-<br/>      </p>
-<h2>Contact</h2>
-<p> (charles.choi@yummymelon.com)
-<br/>      </p>
+<p>Charles Choi (charles.choi@yummymelon.com)</p>
+<h2>Issues</h2>
+<p>Please submit any bugs or feature requests to our <a href="https://github.com/kickingvegas/enscript2dropbox/issues?sort=created&direction=desc&state=open">issue tracker</a>.</p>
 
 
-    <h2>Download</h2>
+<h2>Download</h2>
     <p>
       You can download this project in either
       <a href="http://github.com/kickingvegas/enscript2dropbox/zipball/master">zip</a> or
