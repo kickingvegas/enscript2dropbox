@@ -47,6 +47,7 @@ enscript(1), pstopdf(1) [OS X], ps2pdf(1) [Linux]
 usageString = "enscript2dropbox [options] file1 file2 ..."
 
 class Enscript2Dropbox:
+    version = '0.1'
     extensionMap = { '.m' : 'objc',
                      '.h' : 'objc' }
 
@@ -151,6 +152,11 @@ class Enscript2Dropbox:
             elif o in ('-w', '-W', '--language'):
                 language = i
 
+            elif o in ('-v', '--version'):
+                sys.stderr.write('%s\n' % self.version)
+                sys.exit(0)
+                
+
 
         if len(args) == 0:
             sys.stderr.write('ERROR: You must specify a filename.\n')
@@ -180,8 +186,8 @@ class Enscript2Dropbox:
 if __name__ == '__main__':
     try:
         optlist, args = getopt.getopt(sys.argv[1:],
-                                      'hE:w:W:',
-                                      ['help', 'highlight=', 'language='])
+                                      'vhE:w:W:',
+                                      ['version', 'help', 'highlight=', 'language='])
                                        
     except getopt.error, msg:
         sys.stderr.write(msg.msg + '\n')
