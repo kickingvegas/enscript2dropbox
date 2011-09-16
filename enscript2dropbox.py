@@ -103,6 +103,9 @@ class Enscript2Dropbox:
             result = os.environ['TMP']
         elif os.environ.has_key('TEMP'):
             result = os.environ['TEMP']
+        else:
+            result = '/tmp'
+                
         return result
 
 
@@ -134,6 +137,10 @@ class Enscript2Dropbox:
         prefix, suffix = os.path.splitext(self.outfileName)
         self.outfileName = prefix + '.pdf'
         os.unlink(tempFilePath)
+
+        if sys.platform not in ('darwin',):
+            shutil.move(self.outfileName, self.getTempDir())
+        
         
     def run(self, optlist, args):
         highlight = None
