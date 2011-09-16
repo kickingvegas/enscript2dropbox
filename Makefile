@@ -17,5 +17,6 @@ EXEC=enscript2dropbox
 INSTALL_DIR=$(HOME)/bin
 
 install:
+	- mkdir -p $(HOME)/bin
 	cp -f $(EXEC).py $(INSTALL_DIR)/$(EXEC)
 	chmod uog+x $(INSTALL_DIR)/$(EXEC)
