@@ -20,3 +20,6 @@ install:
 	- mkdir -p $(HOME)/bin
 	cp -f $(EXEC).py $(INSTALL_DIR)/$(EXEC)
 	chmod uog+x $(INSTALL_DIR)/$(EXEC)
+
+uninstall:
+	rm $(INSTALL_DIR)/$(EXEC)
