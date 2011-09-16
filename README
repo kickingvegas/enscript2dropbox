@@ -1,7 +1,8 @@
-NOTE: This code is in beta.
+NOTE: This code is in beta. It has only been tested on OS X. 
 
-INSTALL (TBD)
- Run Make. By default it will install in $HOME/bin
+INSTALL
+ Run Make. By default it will install enscript2dropbox in $HOME/bin
+ $ make
  
 DESCRIPTION
  enscript2dropbox is a utility which generates colorized HTML or pdf output of
