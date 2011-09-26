@@ -1,7 +1,7 @@
-NOTE: This code is in beta. It has only been tested on OS X. 
+enscript2dropbox README
 
 INSTALL
- Run Make. By default it will install enscript2dropbox in $HOME/bin
+ Run make. By default it will install enscript2dropbox in $HOME/bin
  $ make
  
 DESCRIPTION
@@ -20,3 +20,5 @@ DESCRIPTION
 
 SEE ALSO
 enscript(1), pstopdf(1) [OS X], ps2pdf(1) [Linux]
+
+NOTE: This code has been tested on OS X 10.6.8 and Ubuntu 10.10.
